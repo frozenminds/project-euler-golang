@@ -2,18 +2,18 @@ package main
 
 import "testing"
 
-type testpair struct {
+type testpair001 struct {
 	limit    int
 	expected int
 }
 
-var tests = []testpair{
+var tests001 = []testpair001{
 	{10, 23},
 	{1000, 233168},
 }
 
 func TestProblem1unefficient(t *testing.T) {
-	for _, test := range tests {
+	for _, test := range tests001 {
 		sum := problem1unefficient(test.limit)
 		if sum != test.expected {
 			t.Errorf("problem1unefficient(%d) = %d, WANT: %d", test.limit, sum, test.expected)
@@ -22,7 +22,7 @@ func TestProblem1unefficient(t *testing.T) {
 }
 
 func TestProblem1efficient(t *testing.T) {
-	for _, test := range tests {
+	for _, test := range tests001 {
 		sum := problem1efficient(test.limit)
 		if sum != test.expected {
 			t.Errorf("problem1unefficient(%d) = %d, WANT: %d", test.limit, sum, test.expected)
