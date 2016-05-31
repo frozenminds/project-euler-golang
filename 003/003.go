@@ -4,48 +4,26 @@
 
 package problem003
 
-import "fmt"
-
-// Check if number is prime
-func prime(n int) bool {
-	for i := 2; i < n-1; i++ {
-		if n%i == 0 {
-			return false
-		}
+// get max
+func max(a, b int64) int64 {
+	if a > b {
+		return a
 	}
-	return true
+	return b
 }
 
-// Find maximum prime factor
-func PrimeMax(n int) int {
+// PrimeMax - Find maximum prime factor
+func PrimeMax(n int64) int64 {
 
-	primes := []int{}
-
-	f := func(primes []int, n int) bool {
-
-		res := 1
-		for _, v := range primes {
-			res *= v
-			if res > n {
-				return false
-			}
-			if res == n {
-				return true
-			}
-		}
-
-		return false
-	}
-
-	for i := 2; i <= n; i++ {
-		if prime(i) {
-			primes = append(primes, i)
-			if f(primes, n) {
-				fmt.Println("found max: ", i)
-				return i
-			}
+	factor := n
+	for i := int64(2); i*i <= n; i++ {
+		if n%i == 0 {
+			factor = max(i, n/i)
+			break
 		}
 	}
-
-	return 2
+	if factor == n {
+		return n
+	}
+	return PrimeMax(factor)
 }

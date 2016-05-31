@@ -3,12 +3,12 @@ package problem003
 import "testing"
 
 type testpair struct {
-	value    int
-	expected int
+	value    int64
+	expected int64
 }
 
 var tests = []testpair{
-	{13195, 29},
+	{600851475143, 6857},
 }
 
 func TestPrimeMax(t *testing.T) {
